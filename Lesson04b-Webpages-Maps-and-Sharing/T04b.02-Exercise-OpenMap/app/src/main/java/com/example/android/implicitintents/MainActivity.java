@@ -19,6 +19,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -39,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
     public void onClickOpenWebpageButton(View v) {
         String urlAsString = "http://www.udacity.com";
         openWebPage(urlAsString);
+        Log.d(MainActivity.class.toString(), "debug");
     }
 
     /**
@@ -52,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
         Uri.Builder builder = new Uri.Builder();
         builder.scheme("geo").path("0,0").query(address);
         Uri uri = builder.build();
+        Log.d(MainActivity.class.toString(), uri.toString());
         showMap(uri);
     }
 
@@ -111,8 +114,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void showMap(Uri uri) {
-        Intent intent = new Intent();
-        intent.setAction(Intent.ACTION_VIEW);
+        Intent intent = new Intent(Intent.ACTION_VIEW);
         intent.setData(uri);
         if (intent.resolveActivity(getPackageManager()) != null) {
             startActivity(intent);

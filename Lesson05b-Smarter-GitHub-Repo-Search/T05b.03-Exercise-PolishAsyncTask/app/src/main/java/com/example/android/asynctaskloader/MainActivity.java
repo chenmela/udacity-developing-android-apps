@@ -182,9 +182,7 @@ public class MainActivity extends AppCompatActivity implements
                 if (mGithubJson != null) {
                     deliverResult(mGithubJson);
                 }
-                else {
-                    forceLoad();
-                }
+                super.onStartLoading();
             }
 
             @Override
